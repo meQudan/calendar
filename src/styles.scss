@@ -9,3 +9,9 @@ body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+button[mat-raised-button],
+button[mat-stroked-button],
+button[mat-flat-button] {
+	min-width: 110px;
+}

@@ -1,0 +1,9 @@
+<ng-container *ngIf="oneBtn; else twoBtns">
+	<button mat-stroked-button class="login-btn">Login</button>
+
+	<button mat-raised-button class="signup-btn" color="accent">Sign Up</button>
+</ng-container>
+
+<ng-template #twoBtns>
+	<button mat-stroked-button class="login-btn">Login</button>
+</ng-template>

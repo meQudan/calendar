@@ -1,0 +1,6 @@
+<mat-sidenav-container class="sidenav__container" hasBackdrop="true">
+	<mat-sidenav #sidenav mode="over">Sidenav content</mat-sidenav>
+	<mat-sidenav-content>
+		<app-header-toolbar (toggleSidenav)="sidenav.toggle()"></app-header-toolbar>
+	</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="toolbar">
+	<button mat-icon-button (click)="toggleBurger()">
+		<mat-icon>menu</mat-icon>
+	</button>
+
+	<a mat-button href="/" class="toolbar__logo">🐱 Our pets 🐶</a>
+
+	<button mat-mini-fab color="basic" *ngIf="isAuth; else loginSignup">
+		<mat-icon>person</mat-icon>
+	</button>
+</mat-toolbar>
+
+<ng-template #loginSignup>
+	<app-login-signup class="login-signup" ></app-login-signup>
+</ng-template>

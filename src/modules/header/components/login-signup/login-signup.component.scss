@@ -1,0 +1,9 @@
+@use 'src/modules/app/styles/maps.scss' as maps;
+
+.login-btn {
+	border-color: map-get(maps.$green-palette, 'A200');
+}
+
+.signup-btn {
+	margin-left: 10px;
+}
