@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "petprojectsocial-4f5e8": {
+      "hosting": {
+        "pet-projects-social": [
+          "petprojectsocial-4f5e8"
+        ]
+      }
+    }
+  }
+}

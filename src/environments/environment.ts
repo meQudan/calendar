@@ -4,6 +4,15 @@
 
 export const environment = {
 	production: false,
+	firebase: {
+		apiKey: "AIzaSyBZyYHn0rIScqG4Bm7IV8kQjBW45fcKugQ",
+		authDomain: "petprojectsocial-4f5e8.firebaseapp.com",
+		databaseURL: "https://petprojectsocial-4f5e8-default-rtdb.firebaseio.com",
+		projectId: "petprojectsocial-4f5e8",
+		storageBucket: "petprojectsocial-4f5e8.appspot.com",
+		messagingSenderId: "689461517797",
+		appId: "1:689461517797:web:90364730ceb9de06a0230c"
+	  }
 };
 
 /*
