@@ -1,0 +1,23 @@
+<h2 mat-dialog-title align="center">Sign up</h2>
+
+<mat-dialog-content class="signup-modal__content">
+	<app-signup-form></app-signup-form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="signup-modal__actions" align="center">
+
+	<button
+		class="signup-modal__submit-btn"
+		type="submit"
+		form="signup-form"
+		mat-raised-button
+		color="accent"
+		cdkFocusInitial
+	>
+		Sign up
+	</button>
+
+	<p class="signup-modal__havent-acc-text">Already have an account?</p>
+
+	<button mat-button color="accent" mat-dialog-close (click)="openLoginModal()">Login now ></button>
+</mat-dialog-actions>

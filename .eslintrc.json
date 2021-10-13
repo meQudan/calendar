@@ -28,11 +28,21 @@
 					}
 				],
 				"@typescript-eslint/indent": ["error", "tab"],
-				"indent": ["error", "tab"],
-				"max-len": [
-					"warn",
+				"@typescript-eslint/comma-dangle": [
+					2,
 					{
-						"code": 120
+						"arrays": "always-multiline",
+						"objects": "always-multiline",
+						"imports": "always-multiline",
+						"exports": "always-multiline",
+						"functions": "ignore"
+					}
+				],
+				"indent": [
+					"error",
+					"tab",
+					{
+						"SwitchCase": 1
 					}
 				],
 				"no-console": [

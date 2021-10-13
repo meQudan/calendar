@@ -3,7 +3,7 @@
 		<mat-icon>menu</mat-icon>
 	</button>
 
-	<a mat-button href="/" class="toolbar__logo">🐱 Our pets 🐶</a>
+	<a mat-button href="/" class="toolbar__logo">HR helper</a>
 
 	<button mat-mini-fab color="basic" *ngIf="isAuth; else loginSignup">
 		<mat-icon>person</mat-icon>
@@ -11,5 +11,5 @@
 </mat-toolbar>
 
 <ng-template #loginSignup>
-	<app-login-signup class="login-signup" ></app-login-signup>
+	<app-login-signup-btns class="login-signup"></app-login-signup-btns>
 </ng-template>

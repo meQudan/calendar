@@ -1,0 +1,32 @@
+<h2 mat-dialog-title align="center">Login</h2>
+
+<mat-dialog-content class="login-modal__content">
+	<app-login-form></app-login-form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="login-modal__actions" align="center">
+	<button
+		class="login-modal__restore-password"
+		mat-button
+		color="accent"
+		mat-dialog-close
+		(click)="openrestorePassModal()"
+	>
+		Forgot your password?
+	</button>
+
+	<button
+		class="login-modal__submit-btn"
+		type="submit"
+		form="login-form"
+		mat-raised-button
+		color="accent"
+		cdkFocusInitial
+	>
+		Login
+	</button>
+
+	<p class="login-modal__havent-acc-text">Don't have an account?</p>
+
+	<button type="submit" mat-button mat-dialog-close color="accent" (click)="openSignupModal()">Sign up now ></button>
+</mat-dialog-actions>

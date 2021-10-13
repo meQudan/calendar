@@ -1,0 +1,18 @@
+<h2 mat-dialog-title align="center">Password restore</h2>
+
+<mat-dialog-content>
+	<p align="center">
+		Enter your email to restore password. A password reset link will be sent to your e-mail address shortly.
+	</p>
+	<form id="restore-pass-form" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+		<mat-form-field appearance="fill">
+			<mat-label>Enter your email</mat-label>
+			<input matInput placeholder="pet@example.com" formControlName="email" />
+			<mat-error *ngIf="form.controls.email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+		</mat-form-field>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+	<button type="submit" form="restore-pass-form" mat-raised-button color="accent" cdkFocusInitial>Restore</button>
+</mat-dialog-actions>
