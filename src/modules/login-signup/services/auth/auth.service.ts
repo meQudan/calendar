@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { getAuth, updateProfile } from '@angular/fire/auth';
 import { LoginModalComponent } from 'src/modules/login-signup/components/login-modal/login-modal.component';
 import { SignupModalComponent } from 'src/modules/login-signup/components/signup-modal/signup-modal.component';
 import { NotificationService } from 'src/modules/core/services/notification/notification.service';
-import { RestorePassModalComponent } from 'src/modules/login-signup/components/restore-pass-modal/restore-pass-modal.component';
+import {
+	RestorePassModalComponent,
+} from 'src/modules/login-signup/components/restore-pass-modal/restore-pass-modal.component';
+import {IUser, IUserProfileChanges} from 'src/modules/login-signup/interfaces/user.interface';
+import {BehaviorSubject} from "rxjs";
 
 type TLoginSignupResult = 'error' | 'success';
 
@@ -12,33 +17,20 @@ type TLoginSignupResult = 'error' | 'success';
 	providedIn: 'root',
 })
 export class AuthService {
-	public isUserLoggedIn: boolean;
+	public currentUser: IUser | null = null;
+
+	public isUserLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(!!this.currentUser);
 
 	constructor(
 		public dialog: MatDialog,
 		private afAuth: AngularFireAuth,
 		private notificationService: NotificationService
 	) {
-		this.isUserLoggedIn = false;
-
 		this.afAuth.onAuthStateChanged((user) => {
-			if (user) {
-				this.isUserLoggedIn = true;
-			} else {
-				this.isUserLoggedIn = false;
-			}
+			this.isUserLoggedIn$.next(!!user);
+			this.currentUser = user;
+			console.log(this.currentUser);
 		});
-	}
-
-	private fbGetErrMessage(errMessage: string): string {
-		let messegeStartIndex = 0;
-		let messegeEngIndex = errMessage.indexOf(' (auth/');
-
-		if (errMessage.startsWith('Firebase: ')) {
-			messegeStartIndex = 10;
-		}
-
-		return errMessage.slice(messegeStartIndex, messegeEngIndex);
 	}
 
 	public loginUser(email: string, password: string): Promise<TLoginSignupResult> {
@@ -76,6 +68,8 @@ export class AuthService {
 			.createUserWithEmailAndPassword(user.email, user.password)
 			.then(() => {
 				this.notificationService.showNotification('success', "You're welcome!");
+				this.updateUserProfile( { displayName: 'asdasd' } );
+
 
 				return 'success' as TLoginSignupResult;
 			})
@@ -129,8 +123,8 @@ export class AuthService {
 			});
 	}
 
-	public logoutUser(): void {
-		this.afAuth.signOut();
+	public logoutUser(): Promise<any> {
+		return this.afAuth.signOut();
 	}
 
 	public openLoginModal(): void {
@@ -141,7 +135,25 @@ export class AuthService {
 		this.dialog.open(SignupModalComponent);
 	}
 
-	public openrestorePassModal(): void {
+	public openRestorePassModal(): void {
 		this.dialog.open(RestorePassModalComponent, { maxWidth: '400px' });
 	}
+
+	public updateUserProfile(changesObj: IUserProfileChanges) {
+		const auth = getAuth();
+		// @ts-ignore
+		updateProfile(auth.currentUser, changesObj);
+	}
+
+	private fbGetErrMessage(errMessage: string): string {
+		let messegeStartIndex = 0;
+		let messegeEngIndex = errMessage.indexOf(' (auth/');
+
+		if (errMessage.startsWith('Firebase: ')) {
+			messegeStartIndex = 10;
+		}
+
+		return errMessage.slice(messegeStartIndex, messegeEngIndex);
+	}
+
 }

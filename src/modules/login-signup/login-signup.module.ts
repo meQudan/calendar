@@ -28,13 +28,13 @@ import { RestorePassModalComponent } from 'src/modules/login-signup/components/r
 	imports: [
 		CommonModule,
 		FormsModule,
-		AuthModule,
 		MatButtonModule,
 		MatDialogModule,
 		MatFormFieldModule,
 		MatIconModule,
 		ReactiveFormsModule,
 		MatInputModule,
+		AuthModule,
 	],
 	exports: [LoginSignupBtnsComponent],
 })

@@ -5,9 +5,7 @@
 
 	<a mat-button href="/" class="toolbar__logo">Calendar</a>
 
-	<button mat-mini-fab color="basic" *ngIf="isAuth; else loginSignup">
-		<mat-icon>person</mat-icon>
-	</button>
+	<app-profile-menu *ngIf="isAuth; else loginSignup"></app-profile-menu>
 </mat-toolbar>
 
 <ng-template #loginSignup>

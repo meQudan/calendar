@@ -7,10 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderToolbarComponent } from './components/header-toolbar/header-toolbar.component';
 
 import { LoginSignupModule } from 'src/modules/login-signup/login-signup.module';
+import {MenuModule} from "../menu/menu.module";
 
 @NgModule({
 	declarations: [HeaderToolbarComponent],
-	imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, LoginSignupModule],
+    imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, LoginSignupModule, MenuModule],
 	exports: [HeaderToolbarComponent],
 })
 export class HeaderModule {}

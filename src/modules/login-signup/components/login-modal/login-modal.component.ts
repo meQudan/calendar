@@ -14,6 +14,6 @@ export class LoginModalComponent {
 	}
 
 	public openrestorePassModal(): void {
-		this.authService.openrestorePassModal();
+		this.authService.openRestorePassModal();
 	}
 }
